@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AptmentManager</string>
+    <string name="imagem_de_abertura_do_app">Imagem de abertura do app</string>
 </resources>
