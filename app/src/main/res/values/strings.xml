@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">AptmentManager</string>
     <string name="imagem_de_abertura_do_app">Imagem de abertura do app</string>
+    <string name="criar_conta">Criar Conta</string>
+    <string name="login">LOGIN</string>
+    <string name="e_mail">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="avisocriarconta">Caso seja o primeiro acesso, por favor crie uma conta!</string>
+    <string name="cadastro">CADASTRO</string>
+    <string name="cadastrar">CADASTRAR</string>
 </resources>
