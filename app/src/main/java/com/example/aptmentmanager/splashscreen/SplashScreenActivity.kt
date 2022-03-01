@@ -1,11 +1,13 @@
 package com.example.aptmentmanager.splashscreen
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aptmentmanager.MainActivity
 import com.example.aptmentmanager.databinding.ActivitySplashScreenBinding
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivitySplashScreenBinding

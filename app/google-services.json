@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "125308677187",
+    "project_id": "aptmentmanager-c4cf2",
+    "storage_bucket": "aptmentmanager-c4cf2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125308677187:android:ecf5d1edf2c42ed50738f6",
+        "android_client_info": {
+          "package_name": "com.example.aptmentmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125308677187-0i9uqopks1rof100p4tvv22aaatflvej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aptmentmanager",
+            "certificate_hash": "f96b21cf241090fa6d0b2a92609e364d8ef74f83"
+          }
+        },
+        {
+          "client_id": "125308677187-75i6s1qfi06r8r9j4p9bol28hrvefk57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo1uOXCQWWKIvpvvWuhnjkDgqXfip1XKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125308677187-75i6s1qfi06r8r9j4p9bol28hrvefk57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
