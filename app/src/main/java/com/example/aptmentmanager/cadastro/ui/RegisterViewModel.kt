@@ -1,4 +1,4 @@
-package com.example.aptmentmanager.cadastro
+package com.example.aptmentmanager.cadastro.ui
 
 import androidx.lifecycle.ViewModel
 

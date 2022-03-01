@@ -1,4 +1,4 @@
-package com.example.aptmentmanager.login
+package com.example.aptmentmanager.login.ui
 
 import androidx.lifecycle.ViewModel
 

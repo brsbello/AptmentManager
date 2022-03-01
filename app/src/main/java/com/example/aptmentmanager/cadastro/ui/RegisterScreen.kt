@@ -1,16 +1,16 @@
-package com.example.aptmentmanager.login
+package com.example.aptmentmanager.cadastro.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.aptmentmanager.databinding.FragmentLoginScreenBinding
+import com.example.aptmentmanager.databinding.FragmentRegisterScreenBinding
 
-class LoginScreen : Fragment() {
+class RegisterScreen : Fragment() {
 
-    private lateinit var binding: FragmentLoginScreenBinding
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var binding: FragmentRegisterScreenBinding
+    private lateinit var viewModel: RegisterViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,7 @@ class LoginScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLoginScreenBinding.inflate(layoutInflater, container, false)
+        binding = FragmentRegisterScreenBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_reverse"
-    tools:context=".login.LoginScreen">
+    tools:context=".login.ui.LoginScreen">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_login"
