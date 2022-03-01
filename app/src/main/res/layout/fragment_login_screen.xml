@@ -90,17 +90,30 @@
                 tools:ignore="SmallSp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/bt_criarconta"
-                android:layout_width="wrap_content"
+                android:id="@+id/bt_login"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_criarconta"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/purple_light"
+                android:elevation="15dp"
+                android:text="@string/login"
+                app:cornerRadius="50dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_criarconta"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bt_login"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/purple_light"
-                android:elevation="10dp"
+                android:elevation="15dp"
                 android:text="@string/criar_conta"
                 app:cornerRadius="50dp" />
         </RelativeLayout>
