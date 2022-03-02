@@ -54,6 +54,7 @@
                     app:boxStrokeColor="@color/purple_light">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_textnomecadastro"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -77,6 +78,7 @@
                     app:boxStrokeColor="@color/purple_light">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_textemailcadastro"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
@@ -100,6 +102,7 @@
                     app:endIconMode="password_toggle">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_textsenhacadastro"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"

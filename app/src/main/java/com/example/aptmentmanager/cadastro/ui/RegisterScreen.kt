@@ -29,9 +29,9 @@ class RegisterScreen : Fragment() {
     }
 
     private fun InitComponentes(){
-        val nome = binding.etNome
-        val email = binding.etEmailcadastro
-        val senha = binding.etSenhacadastro
+        val nome = binding.etTextnomecadastro
+        val email = binding.etTextemailcadastro
+        val senha = binding.etTextsenhacadastro
         val btCadastrar = binding.btCriarconta
 
         btCadastrar.setOnClickListener {

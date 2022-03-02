@@ -39,9 +39,14 @@ android {
 
 dependencies {
 
-    implementation 'androidx.annotation:annotation:1.3.0'
     var lifecycle_version = "2.5.0-alpha03"
+    var fragment_version = "1.4.1"
+    var nav_version = "2.4.1"
 
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation 'androidx.annotation:annotation:1.3.0'
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -57,5 +62,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
     implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
 
 }
