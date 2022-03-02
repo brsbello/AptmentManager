@@ -17,6 +17,7 @@ class RegisterScreen : Fragment() {
         arguments?.let {
 
         }
+        InitComponentes()
     }
 
     override fun onCreateView(
@@ -25,6 +26,18 @@ class RegisterScreen : Fragment() {
     ): View {
         binding = FragmentRegisterScreenBinding.inflate(layoutInflater, container, false)
         return binding.root
+    }
+
+    private fun InitComponentes(){
+        val nome = binding.etNome
+        val email = binding.etEmailcadastro
+        val senha = binding.etSenhacadastro
+        val btCadastrar = binding.btCriarconta
+
+        btCadastrar.setOnClickListener {
+
+        }
+
     }
 
 }

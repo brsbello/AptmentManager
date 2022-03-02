@@ -17,6 +17,7 @@ class LoginScreen : Fragment() {
         arguments?.let {
 
         }
+        InitComponentes()
     }
 
     override fun onCreateView(
@@ -25,6 +26,22 @@ class LoginScreen : Fragment() {
     ): View {
         binding = FragmentLoginScreenBinding.inflate(layoutInflater, container, false)
         return binding.root
+    }
+
+    private fun InitComponentes(){
+        val email = binding.etEmail
+        val senha = binding.etSenha
+        val btCadastrar = binding.btCriarconta
+        val btLogin = binding.btLogin
+
+        btCadastrar.setOnClickListener {
+
+        }
+
+        btLogin.setOnClickListener {
+
+        }
+
     }
 
 }
