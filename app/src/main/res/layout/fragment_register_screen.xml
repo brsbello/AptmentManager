@@ -12,6 +12,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical">
 
+        <ImageView
+            android:id="@+id/iv_buildingregister"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_building"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingBottom="40dp"
+            android:contentDescription="@string/imagem_de_abertura_do_app" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_cadastro"
             android:layout_width="wrap_content"
@@ -20,7 +31,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/iv_buildingregister">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
