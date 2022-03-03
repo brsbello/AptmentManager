@@ -39,6 +39,7 @@ class RegisterScreen : Fragment() {
                 cadastrarUsuario(nome, email, pass)
             }
         }
+        auth = Firebase.auth
     }
 
     private fun cadastrarUsuario(nome: String, email: String, pass: String) {
@@ -57,6 +58,7 @@ class RegisterScreen : Fragment() {
                         Snackbar.make(binding.root, "Conta Criada com sucesso!", Snackbar.LENGTH_SHORT)
                     sucessSnackbar.show()
                 }
+                //navigation
             }
             binding.pbRegister.visibility = View.GONE
         }
