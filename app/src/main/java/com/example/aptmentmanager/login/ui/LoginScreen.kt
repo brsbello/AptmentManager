@@ -5,63 +5,51 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.aptmentmanager.databinding.FragmentLoginScreenBinding
-import com.google.android.material.button.MaterialButton
 
 class LoginScreen : Fragment() {
 
-    private var binding: FragmentLoginScreenBinding? = null
+    private lateinit var binding: FragmentLoginScreenBinding
     private lateinit var viewModel: LoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): ScrollView? {
-        binding = FragmentLoginScreenBinding.inflate(layoutInflater, container, false)
-        return binding?.root
-
+    ): ScrollView {
+        binding = FragmentLoginScreenBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         activity?.let {
+            viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+            setupButtons()
+        }
 
-            binding?.let {
-                initComponents()
-            }
+    }
+
+    private fun setupButtons() {
+        binding.btCriarconta.setOnClickListener {
+            val controller = findNavController()
+            val action = LoginScreenDirections.actionLoginScreenToCadastroScreen()
+            controller.navigate(action)
+
+        }
+        binding.tvEsquecisenha.setOnClickListener {
+
+        }
+        binding.btLogin.setOnClickListener {
+
         }
     }
 
     private fun initComponents(){
-        val email = binding?.etEmail
-        val senha = binding?.etSenha
-        val btCadastrar = binding?.btCriarconta
-        val btLogin = binding?.btLogin
-        val btEsqueciSenha = binding?.tvEsquecisenha
-
-        setupBT(btCadastrar, btLogin, btEsqueciSenha)
-
-    }
-
-    private fun setupBT(
-        btCadastrar: MaterialButton?,
-        btLogin: MaterialButton?,
-        btEsqueciSenha : TextView?
-    ) {
-        btCadastrar?.setOnClickListener {
-            //val action =
-            //findNavController().navigate(action)
-        }
-
-        btLogin?.setOnClickListener {
-
-        }
-
-        btEsqueciSenha?.setOnClickListener {
-
-        }
+        val email = binding.etEmail
+        val senha = binding.etSenha
     }
 
 }

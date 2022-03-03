@@ -13,11 +13,23 @@
         <action
             android:id="@+id/action_loginScreen_to_cadastroScreen"
             app:destination="@id/cadastroScreen" />
+        <action
+            android:id="@+id/action_loginScreen_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/cadastroScreen"
         android:name="com.example.aptmentmanager.cadastro.ui.RegisterScreen"
         android:label="fragment_register_screen"
-        tools:layout="@layout/fragment_register_screen"/>
+        tools:layout="@layout/fragment_register_screen">
+        <action
+            android:id="@+id/action_cadastroScreen_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.aptmentmanager.home.ui.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" />
 </navigation>

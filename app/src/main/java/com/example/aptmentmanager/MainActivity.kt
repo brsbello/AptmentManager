@@ -14,7 +14,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        fragmentManager.beginTransaction().add(R.id.nav_host_fragment, LoginScreen()).commit()
     }
 }
