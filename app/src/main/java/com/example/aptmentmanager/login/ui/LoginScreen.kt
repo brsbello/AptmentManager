@@ -1,5 +1,6 @@
 package com.example.aptmentmanager.login.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -11,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.aptmentmanager.databinding.FragmentLoginScreenBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -31,11 +34,19 @@ class LoginScreen : Fragment() {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
+        auth = Firebase.auth
         activity?.let {
             viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
             setupButtons()
         }
-        auth = Firebase.auth
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val userLogged = auth.currentUser
+        if(userLogged != null){
+            navigateHome()
+        }
     }
 
     private fun setupButtons() {
@@ -67,16 +78,34 @@ class LoginScreen : Fragment() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    val controller = findNavController()
-                    val action = LoginScreenDirections.actionLoginScreenToHomeFragment()
-                    controller.navigate(action)
-                } else {
-                    val failSnackbar =
-                        Snackbar.make(binding.root, "Não foi possível realizar o login", Snackbar.LENGTH_SHORT)
-                    failSnackbar.show()
+                    navigateHome()
                 }
-                binding.pbLogin.visibility = View.GONE
+            }.addOnFailureListener(requireActivity()) {
+                val error: String = try {
+                    throw it
+                } catch (e: FirebaseAuthInvalidCredentialsException) {
+                    "Senha incorreta"
+                } catch (e : FirebaseNetworkException) {
+                    "Falha na conexão"
+                } catch (e: Exception) {
+                    "Não foi possível realizar o login"
+                }
+                val errorSnackbar = Snackbar.make(
+                    binding.root,
+                    error,
+                    Snackbar.LENGTH_SHORT
+                )
+                errorSnackbar.setBackgroundTint(Color.parseColor("#831A00"))
+                errorSnackbar.setTextColor(Color.WHITE)
+                errorSnackbar.show()
             }
+        binding.pbLogin.visibility = View.GONE
+    }
+
+    private fun navigateHome() {
+        val controller = findNavController()
+        val action = LoginScreenDirections.actionLoginScreenToHomeFragment()
+        controller.navigate(action)
     }
 
     private fun validateForm(): Boolean {

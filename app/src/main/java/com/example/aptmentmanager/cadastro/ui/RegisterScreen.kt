@@ -1,5 +1,6 @@
 package com.example.aptmentmanager.cadastro.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -8,10 +9,14 @@ import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.aptmentmanager.databinding.FragmentRegisterScreenBinding
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class RegisterScreen : Fragment() {
@@ -19,6 +24,8 @@ class RegisterScreen : Fragment() {
     private lateinit var binding: FragmentRegisterScreenBinding
     private lateinit var viewModel: RegisterViewModel
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+    private lateinit var usuarioID: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,16 +37,26 @@ class RegisterScreen : Fragment() {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
+        db = FirebaseFirestore.getInstance()
+        auth = Firebase.auth
         activity?.let {
             viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
-            binding.btCriarconta.setOnClickListener {
-                val email = binding.etTextemailcadastro.text.toString()
-                val pass = binding.etTextsenhacadastro.text.toString()
-                val nome = binding.etTextnomecadastro.text.toString()
-                cadastrarUsuario(nome, email, pass)
-            }
+            setupBTCadastro()
         }
-        auth = Firebase.auth
+    }
+
+    private fun setupBTCadastro() {
+        binding.btCriarconta.setOnClickListener {
+            val (email, pass, nome) = initComponents()
+            cadastrarUsuario(nome, email, pass)
+        }
+    }
+
+    private fun initComponents(): Triple<String, String, String> {
+        val email = binding.etTextemailcadastro.text.toString()
+        val pass = binding.etTextsenhacadastro.text.toString()
+        val nome = binding.etTextnomecadastro.text.toString()
+        return Triple(email, pass, nome)
     }
 
     private fun cadastrarUsuario(nome: String, email: String, pass: String) {
@@ -48,19 +65,64 @@ class RegisterScreen : Fragment() {
         }
 
         binding.pbRegister.visibility = View.VISIBLE
+        auth.createUserWithEmailAndPassword(email, pass)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    user?.sendEmailVerification()?.addOnCompleteListener(requireActivity()) {
+                        setupSnack("Conta Criada com sucesso!")
+                    }
 
-        auth = Firebase.auth
-        auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(requireActivity()) {
-            if (it.isSuccessful) {
-                val user = auth.currentUser
-                user?.sendEmailVerification()?.addOnCompleteListener(requireActivity()) {
-                    val sucessSnackbar =
-                        Snackbar.make(binding.root, "Conta Criada com sucesso!", Snackbar.LENGTH_SHORT)
-                    sucessSnackbar.show()
+                    usuarioID = user?.uid.toString()
+
+                    salvarDados(nome)
+
+                    val controller = findNavController()
+                    controller.navigateUp()
+                    //val action = RegisterScreenDirections.actionCadastroScreenToLoginScreen()
+                    //controller.navigate(action)
                 }
-                //navigation
+            }.addOnFailureListener(requireActivity()) {
+                val error: String = try {
+                    throw it
+                } catch (e: FirebaseAuthWeakPasswordException) {
+                    "Digite uma senha com no mínimo 6 caracteres"
+                } catch (e: FirebaseAuthUserCollisionException) {
+                    "Este e-mail já está cadastrado"
+                } catch (e: FirebaseAuthInvalidCredentialsException) {
+                    "E-mail invalido"
+                } catch(e : FirebaseNetworkException) {
+                    "Falha na conexão"
+                }
+                catch (e: Exception) {
+                    "Não foi possível realizar o cadastro"
+                }
+                setupSnack(error)
             }
-            binding.pbRegister.visibility = View.GONE
+        binding.pbRegister.visibility = View.GONE
+    }
+
+    private fun setupSnack(text: String) {
+        val errorSnackbar = Snackbar.make(
+            binding.root,
+            text,
+            Snackbar.LENGTH_SHORT
+        )
+        errorSnackbar.setBackgroundTint(Color.parseColor("#831A00"))
+        errorSnackbar.setTextColor(Color.WHITE)
+        errorSnackbar.show()
+    }
+
+    private fun salvarDados(nome: String) {
+        //não está salvando
+        val usuarios = mutableMapOf<String, String>()
+        usuarios["nome"] = nome
+
+        val document: DocumentReference = db.collection("Usuarios").document(usuarioID)
+        document.set(usuarios).addOnSuccessListener {
+            // colocar log
+        }.addOnFailureListener {
+            // colocar log
         }
     }
 
