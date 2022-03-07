@@ -3,17 +3,20 @@ package com.example.aptmentmanager.cadastro.ui
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.aptmentmanager.databinding.FragmentRegisterScreenBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
-import com.google.firebase.auth.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,7 +33,7 @@ class RegisterScreen : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): ScrollView {
+    ): View {
         binding = FragmentRegisterScreenBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -72,15 +75,12 @@ class RegisterScreen : Fragment() {
                     user?.sendEmailVerification()?.addOnCompleteListener(requireActivity()) {
                         setupSnack("Conta Criada com sucesso!")
                     }
-
-                    usuarioID = user?.uid.toString()
-
+                    usuarioID = auth.uid.toString()
                     salvarDados(nome)
-
+                    auth.signOut()
                     val controller = findNavController()
-                    controller.navigateUp()
-                    //val action = RegisterScreenDirections.actionCadastroScreenToLoginScreen()
-                    //controller.navigate(action)
+                    val action = RegisterScreenDirections.actionCadastroScreenToLoginScreen()
+                    controller.navigate(action)
                 }
             }.addOnFailureListener(requireActivity()) {
                 val error: String = try {
@@ -103,26 +103,30 @@ class RegisterScreen : Fragment() {
     }
 
     private fun setupSnack(text: String) {
-        val errorSnackbar = Snackbar.make(
-            binding.root,
-            text,
-            Snackbar.LENGTH_SHORT
-        )
-        errorSnackbar.setBackgroundTint(Color.parseColor("#831A00"))
-        errorSnackbar.setTextColor(Color.WHITE)
-        errorSnackbar.show()
+        val errorSnackbar = view?.let {
+            Snackbar.make(
+                it,
+                text,
+                Snackbar.LENGTH_SHORT
+            )
+        }
+        errorSnackbar?.setBackgroundTint(Color.parseColor("#831A00"))
+        errorSnackbar?.setTextColor(Color.WHITE)
+        errorSnackbar?.show()
     }
 
     private fun salvarDados(nome: String) {
         //não está salvando
-        val usuarios = mutableMapOf<String, String>()
+        val usuarios = hashMapOf<String, String>()
         usuarios["nome"] = nome
 
-        val document: DocumentReference = db.collection("Usuarios").document(usuarioID)
+        val document: DocumentReference = db.document("Usuarios/$usuarioID")
         document.set(usuarios).addOnSuccessListener {
             // colocar log
+            Log.e("teste do nome", "nome foi salvo", null)
         }.addOnFailureListener {
             // colocar log
+            Log.e("teste do nome", "nome não foi salvo", null)
         }
     }
 

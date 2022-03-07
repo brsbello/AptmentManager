@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aptmentmanager.MainActivity
 import com.example.aptmentmanager.databinding.ActivitySplashScreenBinding
+import com.example.aptmentmanager.login.ui.LoginScreen
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {

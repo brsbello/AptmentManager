@@ -24,9 +24,6 @@
         android:label="fragment_register_screen"
         tools:layout="@layout/fragment_register_screen">
         <action
-            android:id="@+id/action_cadastroScreen_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
             android:id="@+id/action_cadastroScreen_to_loginScreen"
             app:destination="@id/loginScreen" />
     </fragment>

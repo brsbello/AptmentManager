@@ -6,7 +6,6 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,8 +14,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.lang.Exception
 
 class LoginScreen : Fragment() {
 
@@ -27,7 +28,7 @@ class LoginScreen : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): ScrollView {
+    ): View {
         binding = FragmentLoginScreenBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -87,6 +88,8 @@ class LoginScreen : Fragment() {
                     "Senha incorreta"
                 } catch (e : FirebaseNetworkException) {
                     "Falha na conexão"
+                } catch (e: FirebaseAuthInvalidUserException) {
+                    "E-mail invalido"
                 } catch (e: Exception) {
                     "Não foi possível realizar o login"
                 }
