@@ -7,142 +7,148 @@
     android:background="@drawable/gradient_reverse"
     tools:context=".login.ui.LoginScreen">
 
-    <ImageView
-        android:id="@+id/iv_buildinglogin"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:contentDescription="@string/imagem_de_abertura_do_app"
-        android:paddingBottom="5dp"
-        android:src="@drawable/ic_building"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_buildinglogin">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_email"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="300dp"
+            <ImageView
+                android:id="@+id/iv_buildinglogin"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@string/imagem_de_abertura_do_app"
+                android:paddingBottom="5dp"
+                android:src="@drawable/ic_building" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_login"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="20dp"
+                android:layout_below="@id/iv_buildinglogin"
+                android:layout_centerHorizontal="true"
+                app:cardCornerRadius="30dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="5dp"
+                        android:hint="@string/e_mail"
+                        android:textColorHint="@color/purple_light"
+                        app:boxStrokeColor="@color/purple_light">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_textemaillogin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_senha"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/et_email"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:elevation="5dp"
+                        android:hint="@string/senha"
+                        android:textColorHint="@color/purple_light"
+                        app:boxStrokeColor="@color/purple_light"
+                        app:endIconMode="password_toggle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_textsenhalogin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tv_criarconta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/et_senha"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/avisocriarconta"
+                        android:textColor="@color/purple_light"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt_login"
+                        android:layout_width="200dp"
+                        android:layout_height="60dp"
+                        android:layout_below="@id/tv_criarconta"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:backgroundTint="@color/purple_light"
+                        android:elevation="15dp"
+                        android:text="@string/login"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"
+                        app:cornerRadius="50dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt_criarconta"
+                        android:layout_width="200dp"
+                        android:layout_height="60dp"
+                        android:layout_below="@id/bt_login"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="15dp"
+                        android:backgroundTint="@color/purple_light"
+                        android:elevation="15dp"
+                        android:text="@string/criar_conta"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"
+                        app:cornerRadius="50dp" />
+
+                    <TextView
+                        android:id="@+id/tv_esquecisenha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bt_criarconta"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="20dp"
+                        android:text="@string/recuperar_senha"
+                        android:textColor="@color/purple_light"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <ProgressBar
+                android:id="@+id/pb_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cv_login"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:elevation="5dp"
-                android:hint="@string/e_mail"
-                android:textColorHint="@color/purple_light"
-                app:boxStrokeColor="@color/purple_light">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_textemaillogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_senha"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/et_email"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                android:elevation="5dp"
-                android:hint="@string/senha"
-                android:textColorHint="@color/purple_light"
-                app:boxStrokeColor="@color/purple_light"
-                app:endIconMode="password_toggle">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_textsenhalogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tv_criarconta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/et_senha"
-                android:layout_centerHorizontal="true"
-                android:text="@string/avisocriarconta"
-                android:textColor="@color/purple_light"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/bt_login"
-                android:layout_width="200dp"
-                android:layout_height="60dp"
-                android:layout_below="@id/tv_criarconta"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:backgroundTint="@color/purple_light"
-                android:elevation="15dp"
-                android:text="@string/login"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                app:cornerRadius="50dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/bt_criarconta"
-                android:layout_width="200dp"
-                android:layout_height="60dp"
-                android:layout_below="@id/bt_login"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="15dp"
-                android:backgroundTint="@color/purple_light"
-                android:elevation="15dp"
-                android:text="@string/criar_conta"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                app:cornerRadius="50dp" />
-
-            <TextView
-                android:id="@+id/tv_esquecisenha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/bt_criarconta"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:text="@string/recuperar_senha"
-                android:textColor="@color/purple_light"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:indeterminateTint="@color/white"
+                android:visibility="gone" />
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <ProgressBar
-        android:id="@+id/pb_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:indeterminateTint="@color/white"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_login" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

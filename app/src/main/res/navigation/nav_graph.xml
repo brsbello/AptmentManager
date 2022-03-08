@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/cadastroScreen"
-        android:name="com.example.aptmentmanager.cadastro.ui.RegisterScreen"
+        android:name="com.example.aptmentmanager.registerUser.ui.RegisterScreen"
         android:label="fragment_register_screen"
         tools:layout="@layout/fragment_register_screen">
         <action

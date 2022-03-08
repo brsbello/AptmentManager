@@ -1,4 +1,4 @@
-package com.example.aptmentmanager.cadastro.ui
+package com.example.aptmentmanager.registerUser.ui
 
 import android.graphics.Color
 import android.os.Bundle
@@ -44,25 +44,25 @@ class RegisterScreen : Fragment() {
         auth = Firebase.auth
         activity?.let {
             viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
-            setupBTCadastro()
+            setupBTRegister()
         }
     }
 
-    private fun setupBTCadastro() {
-        binding.btCriarconta.setOnClickListener {
-            val (email, pass, nome) = initComponents()
-            cadastrarUsuario(nome, email, pass)
+    private fun setupBTRegister() {
+        binding.btCreateAccount.setOnClickListener {
+            val (email, pass, name) = initComponents()
+            registerUser(name, email, pass)
         }
     }
 
     private fun initComponents(): Triple<String, String, String> {
-        val email = binding.etTextemailcadastro.text.toString()
-        val pass = binding.etTextsenhacadastro.text.toString()
-        val nome = binding.etTextnomecadastro.text.toString()
-        return Triple(email, pass, nome)
+        val email = binding.etTextEmailRegister.text.toString()
+        val pass = binding.etTextPassRegister.text.toString()
+        val name = binding.etTextNameRegister.text.toString()
+        return Triple(email, pass, name)
     }
 
-    private fun cadastrarUsuario(nome: String, email: String, pass: String) {
+    private fun registerUser(name: String, email: String, pass: String) {
         if (!validateForm()) {
             return
         }
@@ -76,7 +76,7 @@ class RegisterScreen : Fragment() {
                         setupSnack("Conta Criada com sucesso!")
                     }
                     usuarioID = auth.uid.toString()
-                    salvarDados(nome)
+                    salvarDados(name)
                     auth.signOut()
                     val controller = findNavController()
                     val action = RegisterScreenDirections.actionCadastroScreenToLoginScreen()
@@ -133,28 +133,28 @@ class RegisterScreen : Fragment() {
     private fun validateForm(): Boolean {
         var valid = true
 
-        val nome = binding.etTextnomecadastro.text.toString()
+        val nome = binding.etTextNameRegister.text.toString()
         if (TextUtils.isEmpty(nome)) {
-            binding.etNome.error = "Digite um nome válido"
+            binding.etNameRegister.error = "Digite um nome válido"
             valid = false
         } else {
-            binding.etNome.error = null
+            binding.etNameRegister.error = null
         }
 
-        val email = binding.etTextemailcadastro.text.toString()
+        val email = binding.etTextEmailRegister.text.toString()
         if (TextUtils.isEmpty(email)) {
-            binding.etEmailcadastro.error = "Digite um email válido"
+            binding.etEmailRegister.error = "Digite um email válido"
             valid = false
         } else {
-            binding.etEmailcadastro.error = null
+            binding.etEmailRegister.error = null
         }
 
-        val password = binding.etTextsenhacadastro.text.toString()
+        val password = binding.etTextPassRegister.text.toString()
         if (TextUtils.isEmpty(password)) {
-            binding.etSenhacadastro.error = "Digite uma senha válida"
+            binding.etPassRegister.error = "Digite uma senha válida"
             valid = false
         } else {
-            binding.etSenhacadastro.error = null
+            binding.etPassRegister.error = null
         }
 
         return valid

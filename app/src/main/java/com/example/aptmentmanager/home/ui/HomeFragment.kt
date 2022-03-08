@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.aptmentmanager.databinding.HomeFragmentBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: HomeFragmentBinding
     private lateinit var viewModel: HomeViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

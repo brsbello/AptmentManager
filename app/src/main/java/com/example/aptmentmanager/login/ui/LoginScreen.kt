@@ -58,7 +58,7 @@ class LoginScreen : Fragment() {
 
         }
         binding.tvEsquecisenha.setOnClickListener {
-            // Implementar depois
+            // Implementar
         }
         binding.btLogin.setOnClickListener {
             val email = binding.etTextemaillogin.text.toString()
