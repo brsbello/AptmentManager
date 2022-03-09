@@ -10,4 +10,13 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="recuperar_senha">Esqueceu a senha? Clique aqui para recuperar.</string>
     <string name="nome">Nome</string>
+    <string name="avisos">Avisos</string>
+    <string name="reservas">Reservas</string>
+    <string name="chamados">Chamados</string>
+    <string name="autoriza_es">Autorizações</string>
+    <string name="atas">Atas</string>
+    <string name="regras">Regras</string>
+    <string name="contatos">Contatos</string>
+    <string name="servi_os">Serviços</string>
+    <string name="logout">Logout</string>
 </resources>

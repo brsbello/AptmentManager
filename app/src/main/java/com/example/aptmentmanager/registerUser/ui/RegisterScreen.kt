@@ -91,10 +91,9 @@ class RegisterScreen : Fragment() {
                     "Este e-mail já está cadastrado"
                 } catch (e: FirebaseAuthInvalidCredentialsException) {
                     "E-mail invalido"
-                } catch(e : FirebaseNetworkException) {
+                } catch (e: FirebaseNetworkException) {
                     "Falha na conexão"
-                }
-                catch (e: Exception) {
+                } catch (e: Exception) {
                     "Não foi possível realizar o cadastro"
                 }
                 setupSnack(error)

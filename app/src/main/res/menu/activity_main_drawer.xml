@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_avisos"
+            android:icon="@drawable/ic_warning"
+            android:title="@string/avisos" />
+        <item
+            android:id="@+id/nav_reservas"
+            android:icon="@drawable/ic_booking"
+            android:title="@string/reservas" />
+        <item
+            android:id="@+id/nav_chamados"
+            android:icon="@drawable/ic_chat"
+            android:title="@string/chamados" />
+        <item
+            android:id="@+id/nav_autorizacoes"
+            android:icon="@drawable/ic_doorlock"
+            android:title="@string/autoriza_es" />
+        <item
+            android:id="@+id/nav_atas"
+            android:icon="@drawable/ic_atas"
+            android:title="@string/atas" />
+        <item
+            android:id="@+id/nav_regras"
+            android:icon="@drawable/ic_rules"
+            android:title="@string/regras" />
+        <item
+            android:id="@+id/nav_contatos"
+            android:icon="@drawable/ic_email"
+            android:title="@string/contatos" />
+        <item
+            android:id="@+id/nav_servicos"
+            android:icon="@drawable/ic_services"
+            android:title="@string/servi_os" />
+    </group>
+</menu>

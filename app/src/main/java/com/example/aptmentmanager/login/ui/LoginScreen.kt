@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import java.lang.Exception
 
 class LoginScreen : Fragment() {
 
@@ -45,7 +44,7 @@ class LoginScreen : Fragment() {
     override fun onStart() {
         super.onStart()
         val userLogged = auth.currentUser
-        if(userLogged != null){
+        if (userLogged != null) {
             navigateHome()
         }
     }
@@ -86,7 +85,7 @@ class LoginScreen : Fragment() {
                     throw it
                 } catch (e: FirebaseAuthInvalidCredentialsException) {
                     "Senha incorreta"
-                } catch (e : FirebaseNetworkException) {
+                } catch (e: FirebaseNetworkException) {
                     "Falha na conexão"
                 } catch (e: FirebaseAuthInvalidUserException) {
                     "E-mail invalido"

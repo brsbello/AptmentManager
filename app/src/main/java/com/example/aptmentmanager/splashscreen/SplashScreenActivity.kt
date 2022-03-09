@@ -6,12 +6,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aptmentmanager.MainActivity
 import com.example.aptmentmanager.databinding.ActivitySplashScreenBinding
-import com.example.aptmentmanager.login.ui.LoginScreen
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivitySplashScreenBinding
+    private lateinit var binding: ActivitySplashScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +25,8 @@ class SplashScreenActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             overridePendingTransition(
-                androidx.appcompat.R.anim.abc_fade_in, androidx.appcompat.R.anim.abc_fade_out)
+                androidx.appcompat.R.anim.abc_fade_in, androidx.appcompat.R.anim.abc_fade_out
+            )
             finish()
         }
     }

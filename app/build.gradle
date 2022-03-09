@@ -40,6 +40,7 @@ android {
 
 dependencies {
 
+    implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
     var lifecycle_version = "2.5.0-alpha03"
     var fragment_version = "1.4.1"
     var nav_version = "2.4.1"

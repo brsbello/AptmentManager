@@ -9,7 +9,7 @@
         android:id="@+id/loginScreen"
         android:name="com.example.aptmentmanager.login.ui.LoginScreen"
         android:label="fragment_login_screen"
-        tools:layout="@layout/fragment_login_screen" >
+        tools:layout="@layout/fragment_login_screen">
         <action
             android:id="@+id/action_loginScreen_to_cadastroScreen"
             app:destination="@id/cadastroScreen" />
@@ -31,5 +31,9 @@
         android:id="@+id/homeFragment"
         android:name="com.example.aptmentmanager.home.ui.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_loginScreen"
+            app:destination="@id/loginScreen" />
+    </fragment>
 </navigation>
