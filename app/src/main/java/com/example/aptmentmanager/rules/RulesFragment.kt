@@ -7,26 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.aptmentmanager.R
+import com.example.aptmentmanager.databinding.RulesFragmentBinding
 
 class RulesFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = RulesFragment()
-    }
-
     private lateinit var viewModel: RulesViewModel
+    private lateinit var binding: RulesFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.rules_fragment, container, false)
+    ): View {
+        binding = RulesFragmentBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RulesViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(itemView, savedInstanceState)
+        viewModel = ViewModelProvider(this)[RulesViewModel::class.java]
+
     }
 
 }

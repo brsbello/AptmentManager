@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.aptmentmanager.R
-import com.example.aptmentmanager.authorizations.AutorizationsFragment
+import com.example.aptmentmanager.authorization.AuthorizationFragment
 import com.example.aptmentmanager.calls.CallsFragment
 import com.example.aptmentmanager.contacts.ContactsFragment
 import com.example.aptmentmanager.databinding.HomeFragmentBinding
@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
             R.id.nav_avisos -> fragment = WarningsFragment()
             R.id.nav_reservas -> fragment = ReservationFragment()
             R.id.nav_chamados -> fragment = CallsFragment()
-            R.id.nav_autorizacoes -> fragment = AutorizationsFragment()
+            R.id.nav_autorizacoes -> fragment = AuthorizationFragment()
             R.id.nav_atas -> fragment = MinutesFragment()
             R.id.nav_regras -> fragment = RulesFragment()
             R.id.nav_contatos -> fragment = ContactsFragment()

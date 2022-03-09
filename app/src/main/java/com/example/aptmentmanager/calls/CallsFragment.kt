@@ -7,26 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.aptmentmanager.R
+import com.example.aptmentmanager.databinding.CallsFragmentBinding
 
 class CallsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CallsFragment()
-    }
-
     private lateinit var viewModel: CallsViewModel
+    private lateinit var binding:CallsFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.calls_fragment, container, false)
+    ): View {
+        binding = CallsFragmentBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CallsViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(itemView, savedInstanceState)
+        viewModel = ViewModelProvider(this)[CallsViewModel::class.java]
+
     }
 
 }

@@ -7,26 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.aptmentmanager.R
+import com.example.aptmentmanager.databinding.ReservationFragmentBinding
 
 class ReservationFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ReservationFragment()
-    }
-
     private lateinit var viewModel: ReservationViewModel
+    private lateinit var binding: ReservationFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.reservation_fragment, container, false)
+    ): View {
+        binding = ReservationFragmentBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ReservationViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(itemView, savedInstanceState)
+        viewModel = ViewModelProvider(this)[ReservationViewModel::class.java]
+
     }
 
 }

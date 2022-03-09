@@ -7,26 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.aptmentmanager.R
+import com.example.aptmentmanager.databinding.MinutesFragmentBinding
 
 class MinutesFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MinutesFragment()
-    }
-
     private lateinit var viewModel: MinutesViewModel
+    private lateinit var binding: MinutesFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.minutes_fragment, container, false)
+    ): View {
+        binding = MinutesFragmentBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MinutesViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(itemView, savedInstanceState)
+        viewModel = ViewModelProvider(this)[MinutesViewModel::class.java]
+
     }
 
 }
