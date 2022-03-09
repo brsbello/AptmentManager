@@ -19,4 +19,6 @@
     <string name="contatos">Contatos</string>
     <string name="servi_os">Serviços</string>
     <string name="logout">Logout</string>
+    <string name="navigation_drawer_open">Drawer Open</string>
+    <string name="navigation_drawer_close">Drawer Closed</string>
 </resources>
