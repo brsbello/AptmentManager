@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
@@ -114,13 +113,11 @@ class RegisterScreen : Fragment() {
         errorSnackbar?.show()
     }
 
-    private fun salvarDados(nome: String) {
-        //não está salvando
-        val usuarios = hashMapOf<String, String>()
-        usuarios["nome"] = nome
+    private fun salvarDados(name: String) {
 
-        val document: DocumentReference = db.document("Usuarios/$usuarioID")
-        document.set(usuarios).addOnSuccessListener {
+        val usuarios = hashMapOf("name" to name)
+        db.collection("Usuarios").document(usuarioID).set(usuarios)
+            .addOnSuccessListener {
             // colocar log
             Log.e("teste do nome", "nome foi salvo", null)
         }.addOnFailureListener {
