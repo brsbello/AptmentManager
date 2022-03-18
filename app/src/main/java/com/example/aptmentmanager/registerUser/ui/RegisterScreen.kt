@@ -115,13 +115,11 @@ class RegisterScreen : Fragment() {
 
     private fun salvarDados(name: String) {
 
-        val usuarios = hashMapOf("name" to name)
+        val usuarios = hashMapOf("name" to name, "class" to 0)
         db.collection("Usuarios").document(usuarioID).set(usuarios)
             .addOnSuccessListener {
-            // colocar log
             Log.e("teste do nome", "nome foi salvo", null)
         }.addOnFailureListener {
-            // colocar log
             Log.e("teste do nome", "nome não foi salvo", null)
         }
     }

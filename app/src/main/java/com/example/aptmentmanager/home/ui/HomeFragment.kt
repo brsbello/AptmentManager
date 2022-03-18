@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.aptmentmanager.R
 import com.example.aptmentmanager.authorization.AuthorizationFragment
 import com.example.aptmentmanager.calls.CallsFragment
+import com.example.aptmentmanager.configs.SettingsFragment
 import com.example.aptmentmanager.contacts.ContactsFragment
 import com.example.aptmentmanager.databinding.HomeFragmentBinding
 import com.example.aptmentmanager.databinding.NavHeaderMainBinding
@@ -102,6 +103,7 @@ class HomeFragment : Fragment() {
             R.id.nav_regras -> fragment = RulesFragment()
             R.id.nav_contatos -> fragment = ContactsFragment()
             R.id.nav_servicos -> fragment = ServicesFragment()
+            R.id.nav_configuracoes -> fragment = SettingsFragment()
         }
 
         if (fragment != null) {

@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
 }
 
 apply plugin: 'com.google.gms.google-services'
@@ -39,12 +41,14 @@ android {
 }
 
 dependencies {
+    def lifecycle_version = "2.5.0-alpha04"
+    def fragment_version = "1.4.1"
+    def nav_version = "2.4.1"
+    def roomVersion = "2.4.2"
 
     implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
-    var lifecycle_version = "2.5.0-alpha03"
-    var fragment_version = "1.4.1"
-    var nav_version = "2.4.1"
-
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")

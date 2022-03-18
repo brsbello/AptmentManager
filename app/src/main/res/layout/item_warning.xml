@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="@color/blue_light"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/TV_ItemSubject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subject"
+            android:textColor="@color/wine"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/TV_ItemTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/TV_ItemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/wine"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TV_ItemSubject" />
+
+        <TextView
+            android:id="@+id/TV_ItemDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/wine"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/TV_Description"
+            app:layout_constraintEnd_toStartOf="@id/TV_ItemHour"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TV_ItemTitle" />
+
+        <TextView
+            android:id="@+id/TV_ItemHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/wine"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/TV_ItemDate"
+            app:layout_constraintTop_toBottomOf="@id/TV_ItemTitle" />
+
+        <TextView
+            android:id="@+id/TV_Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/description"
+            android:textColor="@color/wine"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TV_ItemDate" />
+
+        <ImageView
+            android:id="@+id/IV_ArrowDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:contentDescription="@string/seta_para_abrir_a_descri_o_do_aviso"
+            android:src="@drawable/ic_arrowdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/TV_Description"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="80dp" />
+
+        <TextView
+            android:id="@+id/TV_ContentDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dasdaskkkkssssssssssssssssssssssssssssskhhhhhhhggggjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjhhhhhhkdas"
+            android:textColor="@color/wine"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TV_Description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

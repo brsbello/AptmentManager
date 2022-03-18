@@ -5,10 +5,14 @@
       <map>
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/gradient.xml" value="0.1" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/gradient_reverse.xml" value="0.1" />
+        <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_add.xml" value="0.16" />
+        <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_arrowdown.xml" value="0.16" />
+        <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_arrowup.xml" value="0.16" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_atas.xml" value="0.16" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_booking.xml" value="0.16" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_building.xml" value="0.1" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_chat.xml" value="0.16" />
+        <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_config.xml" value="0.1" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_doorlock.xml" value="0.16" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_email.xml" value="0.16" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/drawable/ic_logout.xml" value="0.16" />
@@ -28,12 +32,15 @@
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/fragment_login_screen.xml" value="0.264" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/fragment_register_screen.xml" value="0.264" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/home_fragment.xml" value="0.36394557823129253" />
+        <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/item_waning.xml" value="0.25" />
+        <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/item_warning.xml" value="0.264" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/minutes_fragment.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/nav_header_main.xml" value="0.4863636363636364" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/reservation_fragment.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/rules_fragment.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/services_fragment.xml" value="0.11041666666666666" />
-        <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/warnings_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/settings_fragment.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/layout/warnings_fragment.xml" value="0.264" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/menu/activity_main_drawer.xml" value="0.536" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/menu/menu_principal.xml" value="0.25" />
         <entry key="..\:/Users/bruno/AndroidStudioProjects/AptmentManager/app/src/main/res/menu/navigation_drawer.xml" value="0.4" />
