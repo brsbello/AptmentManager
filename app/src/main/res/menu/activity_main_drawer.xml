@@ -11,7 +11,8 @@
         <item
             android:id="@+id/nav_reservas"
             android:icon="@drawable/ic_booking"
-            android:title="@string/reservas" />
+            android:title="@string/reservas"
+            />
         <item
             android:id="@+id/nav_chamados"
             android:icon="@drawable/ic_chat"

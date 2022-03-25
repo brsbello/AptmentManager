@@ -2,7 +2,6 @@ package com.example.aptmentmanager.warnings.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +28,7 @@ class WarningAdapter : ListAdapter<WarningModel, WarningAdapter.WarningViewHolde
             binding.TVItemTitle.text = item.title
             binding.TVItemDate.text = item.date
             binding.TVItemHour.text = item.hour
+            binding.TVContentDescription.text = item.description
             //binding.IVMore.setOnClickListener { showPopup(item) }
         }
 

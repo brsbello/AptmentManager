@@ -75,7 +75,7 @@ class RegisterScreen : Fragment() {
                         setupSnack("Conta Criada com sucesso!")
                     }
                     usuarioID = auth.uid.toString()
-                    salvarDados(name)
+                    salvarDados(name, email)
                     auth.signOut()
                     val controller = findNavController()
                     val action = RegisterScreenDirections.actionCadastroScreenToLoginScreen()
@@ -113,9 +113,9 @@ class RegisterScreen : Fragment() {
         errorSnackbar?.show()
     }
 
-    private fun salvarDados(name: String) {
+    private fun salvarDados(name: String, email: String) {
 
-        val usuarios = hashMapOf("name" to name, "class" to 0)
+        val usuarios = hashMapOf("name" to name, "email" to email, "class" to 0)
         db.collection("Usuarios").document(usuarioID).set(usuarios)
             .addOnSuccessListener {
             Log.e("teste do nome", "nome foi salvo", null)

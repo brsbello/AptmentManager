@@ -90,11 +90,9 @@
             android:id="@+id/TV_ContentDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="dasdaskkkkssssssssssssssssssssssssssssskhhhhhhhggggjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjhhhhhhkdas"
             android:textColor="@color/wine"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/TV_Description" />
 

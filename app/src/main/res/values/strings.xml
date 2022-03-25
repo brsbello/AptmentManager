@@ -24,7 +24,15 @@
     <string name="settings">Configurações</string>
     <string name="warnings">AVISOS</string>
     <string name="fab_addAviso">Botão que adiciona um aviso</string>
-    <string name="subject">Assunto:</string>
-    <string name="description">Descrição:</string>
+    <string name="subject">Assunto</string>
+    <string name="description">Descrição</string>
     <string name="seta_para_abrir_a_descri_o_do_aviso">Seta para abrir a descrição do aviso</string>
+    <string name="assunto">Assunto</string>
+    <string name="date">Data</string>
+    <string name="hour">Horário</string>
+    <string name="cancel">Cancelar</string>
+    <string name="createWarning">Criar Aviso</string>
+    <string name="alterar">Alterar Aviso</string>
+    <string name="sair">Sair</string>
+    <string name="anonimo">Anonimo</string>
 </resources>

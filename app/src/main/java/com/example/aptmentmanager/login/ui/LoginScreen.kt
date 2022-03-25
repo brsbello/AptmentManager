@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.aptmentmanager.databinding.FragmentLoginScreenBinding
+import com.example.aptmentmanager.extensions.text
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
@@ -57,8 +58,42 @@ class LoginScreen : Fragment() {
 
         }
         binding.tvEsquecisenha.setOnClickListener {
-            // Implementar
+            val emailAddress = binding.etEmail.text
+            if (emailAddress != null) {
+                auth.sendPasswordResetEmail(emailAddress).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val sucessSendMailSnackbar = Snackbar.make(
+                            binding.root,
+                            "E-mail de redefinição de senha enviado!",
+                            Snackbar.LENGTH_SHORT
+                        )
+                        sucessSendMailSnackbar.setBackgroundTint(Color.parseColor("#831A00"))
+                        sucessSendMailSnackbar.setTextColor(Color.WHITE)
+                        sucessSendMailSnackbar.show()
+                    }
+                }.addOnFailureListener {
+                    val error: String = try {
+                        throw it
+                    } catch (e: FirebaseNetworkException) {
+                        "Falha na conexão"
+                    } catch (e: FirebaseAuthInvalidUserException) {
+                        "E-mail invalido"
+                    } catch (e: Exception) {
+                        "Não foi possível recuperar a senha"
+                    }
+                    val errorSnackbar = Snackbar.make(
+                        binding.root,
+                        error,
+                        Snackbar.LENGTH_SHORT
+                    )
+                    errorSnackbar.setBackgroundTint(Color.parseColor("#831A00"))
+                    errorSnackbar.setTextColor(Color.WHITE)
+                    errorSnackbar.show()
+                }
+            }
+
         }
+
         binding.btLogin.setOnClickListener {
             val email = binding.etTextemaillogin.text.toString()
             val pass = binding.etTextsenhalogin.text.toString()
