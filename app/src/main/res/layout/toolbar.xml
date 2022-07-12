@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.appbar.AppBarLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
-    android:layout_height="wrap_content"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/wine"
     android:fitsSystemWindows="true"
-    android:minHeight="?attr/actionBarSize"
-    android:background="@color/wine">
+    android:minHeight="?attr/actionBarSize">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/topAppBar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_menu"
         app:title="Apartment Manager"
-        app:titleTextColor="@color/white"
-        app:navigationIcon="@drawable/ic_menu" />
+        app:titleTextColor="@color/white">
+
+    </androidx.appcompat.widget.Toolbar>
+
 </com.google.android.material.appbar.AppBarLayout>

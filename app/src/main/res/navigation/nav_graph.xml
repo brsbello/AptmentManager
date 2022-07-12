@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/loginScreen"
-        android:name="com.example.aptmentmanager.login.ui.LoginScreen"
+        android:name="com.example.aptmentmanager.ui.login.LoginScreen"
         android:label="fragment_login_screen"
         tools:layout="@layout/fragment_login_screen">
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/cadastroScreen"
-        android:name="com.example.aptmentmanager.registerUser.ui.RegisterScreen"
+        android:name="com.example.aptmentmanager.ui.registerUser.RegisterScreen"
         android:label="fragment_register_screen"
         tools:layout="@layout/fragment_register_screen">
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.aptmentmanager.home.ui.HomeFragment"
+        android:name="com.example.aptmentmanager.ui.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment">
         <action
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/warningsFragment"
-        android:name="com.example.aptmentmanager.warnings.WarningsFragment"
+        android:name="com.example.aptmentmanager.ui.warnings.WarningsFragment"
         android:label="warnings_fragment"
         tools:layout="@layout/warnings_fragment" >
         <action
@@ -78,48 +78,48 @@
     </fragment>
     <fragment
         android:id="@+id/addWarningFragment"
-        android:name="com.example.aptmentmanager.warnings.addwarning.AddWarningFragment"
+        android:name="com.example.aptmentmanager.ui.warnings.addwarning.AddWarningFragment"
         android:label="add_warning_fragment"
         tools:layout="@layout/add_warning_fragment" >
     </fragment>
     <fragment
         android:id="@+id/servicesFragment"
-        android:name="com.example.aptmentmanager.services.ServicesFragment"
+        android:name="com.example.aptmentmanager.ui.services.ServicesFragment"
         android:label="services_fragment"
         tools:layout="@layout/services_fragment" />
     <fragment
         android:id="@+id/rulesFragment"
-        android:name="com.example.aptmentmanager.rules.RulesFragment"
+        android:name="com.example.aptmentmanager.ui.rules.RulesFragment"
         android:label="rules_fragment"
         tools:layout="@layout/rules_fragment" />
     <fragment
         android:id="@+id/reservationFragment"
-        android:name="com.example.aptmentmanager.reservation.ReservationFragment"
+        android:name="com.example.aptmentmanager.ui.reservation.ReservationFragment"
         android:label="reservation_fragment"
         tools:layout="@layout/reservation_fragment" />
     <fragment
         android:id="@+id/minutesFragment"
-        android:name="com.example.aptmentmanager.minutes.MinutesFragment"
+        android:name="com.example.aptmentmanager.ui.minutes.MinutesFragment"
         android:label="minutes_fragment"
         tools:layout="@layout/minutes_fragment" />
     <fragment
         android:id="@+id/callsFragment"
-        android:name="com.example.aptmentmanager.calls.CallsFragment"
+        android:name="com.example.aptmentmanager.ui.calls.CallsFragment"
         android:label="calls_fragment"
         tools:layout="@layout/calls_fragment" />
     <fragment
         android:id="@+id/authorizationFragment"
-        android:name="com.example.aptmentmanager.authorization.AuthorizationFragment"
+        android:name="com.example.aptmentmanager.ui.authorization.AuthorizationFragment"
         android:label="authorizations_fragment"
         tools:layout="@layout/authorizations_fragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.aptmentmanager.configs.SettingsFragment"
+        android:name="com.example.aptmentmanager.ui.configs.SettingsFragment"
         android:label="settings_fragment"
         tools:layout="@layout/settings_fragment" />
     <fragment
         android:id="@+id/contactsFragment"
-        android:name="com.example.aptmentmanager.contacts.ContactsFragment"
+        android:name="com.example.aptmentmanager.ui.contacts.ContactsFragment"
         android:label="contacts_fragment"
         tools:layout="@layout/contacts_fragment" />
 </navigation>
