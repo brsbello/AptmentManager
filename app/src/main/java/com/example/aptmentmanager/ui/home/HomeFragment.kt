@@ -84,8 +84,8 @@ class HomeFragment : Fragment(), KodeinAware {
                 bindingHeader.tvMenuName.text = value.getString("name")
                 bindingHeader.tvMenuEmail.text = value.getString("email")
             } else {
-                bindingHeader.tvMenuName.text = getString(R.string.anonimo)
-                bindingHeader.tvMenuEmail.text = getString(R.string.anonimo)
+                bindingHeader.tvMenuName.text = context?.getString(R.string.anonimo)
+                bindingHeader.tvMenuEmail.text = context?.getString(R.string.anonimo)
             }
         }
 

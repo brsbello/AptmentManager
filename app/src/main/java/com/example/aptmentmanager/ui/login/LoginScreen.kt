@@ -40,6 +40,7 @@ class LoginScreen : Fragment(), AuthListener, KodeinAware {
             binding.viewmodel = viewModel
             viewModel.authListener = this
             setupButtons()
+
         }
     }
 

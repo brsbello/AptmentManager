@@ -17,8 +17,8 @@ class AuthViewModel(
     var email: String? = null
     var password: String? = null
     var name: String? = null
-    var uid: String? = null
     var authListener: AuthListener? = null
+    private var uid: String? = null
     private val disposables = CompositeDisposable()
 
     val user by lazy {
@@ -121,7 +121,7 @@ class AuthViewModel(
         }
         getUid()
         if (uid.isNullOrEmpty()) {
-            authListener?.onFailure("Usuario inválido")
+            authListener?.onFailure("Usuario inválido ou já cadastrado")
             return
         }
 
@@ -137,7 +137,7 @@ class AuthViewModel(
         disposables.add(disposable)
     }
 
-    fun getUid() {
+    private fun getUid() {
         if (user != null) {
             uid = repository.getUid()
         }
