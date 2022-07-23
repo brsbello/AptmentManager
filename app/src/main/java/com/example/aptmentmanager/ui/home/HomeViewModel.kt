@@ -1,15 +1,17 @@
 package com.example.aptmentmanager.ui.home
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.example.aptmentmanager.data.models.Usuario
 import com.example.aptmentmanager.data.repositories.UserRepository
 
 class HomeViewModel(
     private val repository: UserRepository
 ) : ViewModel() {
 
-    var uid: String? = null
+    private var uid: String? = null
 
-    val user by lazy {
+    private val user by lazy {
         repository.currentUser()
     }
 
@@ -17,10 +19,21 @@ class HomeViewModel(
         repository.logout()
     }
 
-    fun getUid() {
+    fun logged(): Boolean {
+
+        return repository.currentUser() != null
+    }
+
+    private fun getId(): String? {
         if (user != null) {
             uid = repository.getUid()
         }
-
+        return uid
     }
+
+    fun recoverDataLogin(): LiveData<Usuario> {
+
+        return repository.recoverLoginData()
+    }
+
 }

@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -23,7 +24,6 @@ import com.example.aptmentmanager.ui.rules.RulesFragment
 import com.example.aptmentmanager.ui.services.ServicesFragment
 import com.example.aptmentmanager.ui.warnings.WarningsFragment
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.firestore.FirebaseFirestore
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
@@ -35,11 +35,18 @@ class HomeFragment : Fragment(), KodeinAware {
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
     private lateinit var bindingHeader: NavHeaderMainBinding
-    private lateinit var drawer: DrawerLayout
-    private lateinit var navigationView: NavigationView
 
-    private lateinit var db: FirebaseFirestore
-    private lateinit var usuarioID: String
+    private val navigationView: NavigationView by lazy {
+        binding.navView
+    }
+
+    private val drawer: DrawerLayout by lazy {
+        binding.drawerLayout
+    }
+
+    private val controller by lazy {
+        findNavController()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,22 +57,23 @@ class HomeFragment : Fragment(), KodeinAware {
         return binding.root
     }
 
-    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(itemView, savedInstanceState)
-        db = FirebaseFirestore.getInstance()
-        initComponents()
-        activity?.let {
-            viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
-            logOut()
-            setupNavDraw()
-            recoverLoginData()
+    override fun onStart() {
+        super.onStart()
+        if(!viewModel.logged()){
+            navigateLogin()
         }
     }
 
-    private fun navigateLogin() {
-        val controller = findNavController()
-        val action = HomeFragmentDirections.actionHomeFragmentToLoginScreen()
-        controller.navigate(action)
+    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(itemView, savedInstanceState)
+
+        viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+        binding.viewmodel = viewModel
+
+        logOut()
+        recoverLoginData()
+        setupNavDraw()
+
     }
 
     private fun logOut() {
@@ -77,12 +85,11 @@ class HomeFragment : Fragment(), KodeinAware {
 
     private fun recoverLoginData() {
 
-        usuarioID = viewModel.getUid().toString()
-
-        db.collection("Usuarios").document(usuarioID).addSnapshotListener { value, _ ->
-            if (value != null) {
-                bindingHeader.tvMenuName.text = value.getString("name")
-                bindingHeader.tvMenuEmail.text = value.getString("email")
+        viewModel.recoverDataLogin().observe(viewLifecycleOwner) { user ->
+            if (user != null) {
+                bindingHeader.tvMenuName.text = user.name
+                println(user.name)
+                bindingHeader.tvMenuEmail.text = user.email
             } else {
                 bindingHeader.tvMenuName.text = context?.getString(R.string.anonimo)
                 bindingHeader.tvMenuEmail.text = context?.getString(R.string.anonimo)
@@ -109,13 +116,13 @@ class HomeFragment : Fragment(), KodeinAware {
             onNavigationItemSelected(it)
         }
 
-//        val toolbar = binding.drawerLayout.findViewById<Toolbar>(R.id.topAppBar)
-//        activity?.setActionBar(toolbar)
-//        toolbar.setOnClickListener {
-//            if (toggle.)
-//            drawer.openDrawer(GravityCompat.START)
-//            drawer.closeDrawer(GravityCompat.START)
-//        }
+    //    val toolbar = binding.drawerLayout.findViewById<Toolbar>(R.id.topAppBar)
+    //    activity?.setActionBar(toolbar)
+    //    toolbar.setOnClickListener {
+    //        if (toggle.isDrawerIndicatorEnabled)
+    //        drawer.openDrawer(GravityCompat.START)
+    //        drawer.closeDrawer(GravityCompat.START)
+    //    }
     }
 
     private fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -142,8 +149,31 @@ class HomeFragment : Fragment(), KodeinAware {
         return true
     }
 
-    private fun initComponents() {
-        drawer = binding.drawerLayout
-        navigationView = binding.navView
+    private fun navigateLogin() {
+        val action = HomeFragmentDirections.actionHomeFragmentToLoginScreen()
+        controller.navigate(action)
     }
+
+    fun loadImage(){
+        bindingHeader.imageView.setOnClickListener {
+
+        }
+    }
+
+    //fun showDialog(title: String) {
+    //    val dialog = Dialog(activity)
+    //    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+    //    dialog.setCancelable(false)
+    //    dialog.setContentView(R.layout.custom_layout)
+    //    val body = dialog.findViewById(R.id.body) as TextView
+    //    body.text = title
+    //    val yesBtn = dialog.findViewById(R.id.yesBtn) as Button
+    //    val noBtn = dialog.findViewById(R.id.noBtn) as TextView
+    //    yesBtn.setOnClickListener {
+    //        dialog.dismiss()
+    //    }
+    //    noBtn.setOnClickListener { dialog.dismiss() }
+    //    dialog.show()
+    //
+    //}
 }

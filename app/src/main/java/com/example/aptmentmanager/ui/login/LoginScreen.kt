@@ -25,6 +25,8 @@ class LoginScreen : Fragment(), AuthListener, KodeinAware {
     private lateinit var viewModel: AuthViewModel
     private lateinit var binding: FragmentLoginScreenBinding
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -77,19 +79,19 @@ class LoginScreen : Fragment(), AuthListener, KodeinAware {
             val controller = findNavController()
             val action = LoginScreenDirections.actionLoginScreenToCadastroScreen()
             controller.navigate(action)
-
         }
 
         binding.tvEsquecisenha.setOnClickListener {
             viewModel.email = binding.etTextemaillogin.text.toString()
-            viewModel.password = binding.etTextsenhalogin.text.toString()
             viewModel.forgetPassword()
         }
 
         binding.btLogin.setOnClickListener {
             viewModel.email = binding.etTextemaillogin.text.toString()
             viewModel.password = binding.etTextsenhalogin.text.toString()
+
             viewModel.login()
+
         }
     }
 

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.aptmentmanager">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".FirebaseApplication"
         android:allowBackup="true"
@@ -11,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AptmentManager">
         <activity
-            android:name=".splashscreen.SplashScreenActivity"
+            android:name="com.example.aptmentmanager.ui.splashscreen.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.SplashScreen">
             <intent-filter>

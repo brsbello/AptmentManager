@@ -1,4 +1,4 @@
-package com.example.aptmentmanager.ui.warnings.data
+package com.example.aptmentmanager.data.room
 
 import androidx.room.*
 import com.example.aptmentmanager.data.models.WarningModel

@@ -10,7 +10,7 @@ import com.example.aptmentmanager.R
 import com.example.aptmentmanager.databinding.WarningsFragmentBinding
 import com.example.aptmentmanager.ui.warnings.adapter.WarningAdapter
 import com.example.aptmentmanager.ui.warnings.addwarning.AddWarningFragment
-import com.example.aptmentmanager.ui.warnings.data.WarningDataBase
+import com.example.aptmentmanager.data.db.warningdata.WarningDataBase
 
 class WarningsFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.example.aptmentmanager.splashscreen
+package com.example.aptmentmanager.ui.splashscreen
 
 import android.annotation.SuppressLint
 import android.content.Intent

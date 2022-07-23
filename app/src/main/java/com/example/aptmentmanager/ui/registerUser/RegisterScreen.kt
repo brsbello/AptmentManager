@@ -24,6 +24,9 @@ class RegisterScreen : Fragment(), AuthListener, KodeinAware {
     override val kodein: Kodein by kodein()
     private val factory: AuthViewModelFactory by instance()
     private lateinit var viewModel: AuthViewModel
+    private val controller by lazy {
+        findNavController()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,15 +48,14 @@ class RegisterScreen : Fragment(), AuthListener, KodeinAware {
 
     override fun onStarted() {
         binding.pbRegister.visibility = View.VISIBLE
-        //Intent(this, HomeActivity::class.java).also {
-        //    it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        //    startActivity(it)
-        //}
+
     }
 
     override fun onSuccess() {
         binding.pbRegister.visibility = View.GONE
-        navigateLogin()
+        controller.popBackStack()
+        setupSnack("Conta criada com sucesso")
+
     }
 
     override fun onFailure(message: String) {
@@ -66,8 +68,9 @@ class RegisterScreen : Fragment(), AuthListener, KodeinAware {
             viewModel.email = binding.etTextEmailRegister.text.toString()
             viewModel.password = binding.etTextPassRegister.text.toString()
             viewModel.name = binding.etTextNameRegister.text.toString()
+
             viewModel.signup()
-            viewModel.saveData()
+
         }
     }
 
@@ -84,9 +87,4 @@ class RegisterScreen : Fragment(), AuthListener, KodeinAware {
         errorSnackbar?.show()
     }
 
-    private fun navigateLogin() {
-        val controller = findNavController()
-        val action = RegisterScreenDirections.actionCadastroScreenToLoginScreen()
-        controller.navigate(action)
-    }
 }

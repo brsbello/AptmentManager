@@ -12,7 +12,7 @@ import com.example.aptmentmanager.data.models.WarningModel
 import com.example.aptmentmanager.databinding.AddWarningFragmentBinding
 import com.example.aptmentmanager.utils.extensions.format
 import com.example.aptmentmanager.utils.extensions.text
-import com.example.aptmentmanager.ui.warnings.data.WarningDataBase
+import com.example.aptmentmanager.data.db.warningdata.WarningDataBase
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat

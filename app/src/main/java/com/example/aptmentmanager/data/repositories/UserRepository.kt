@@ -1,13 +1,16 @@
 package com.example.aptmentmanager.data.repositories
 
+import androidx.lifecycle.LiveData
 import com.example.aptmentmanager.data.firebase.FirebaseSource
+import com.example.aptmentmanager.data.models.Usuario
 
 class UserRepository(
     private val firebase: FirebaseSource
 ) {
     fun login(email: String, password: String) = firebase.login(email, password)
 
-    fun register(email: String, password: String) = firebase.register(email, password)
+    fun register(name: String, email: String, password: String) =
+        firebase.register(name, email, password)
 
     fun currentUser() = firebase.currentUser()
 
@@ -15,8 +18,8 @@ class UserRepository(
 
     fun forgetPassword(email: String) = firebase.forgetPassword(email)
 
-    fun saveData(name: String, email: String, uid: String) = firebase.saveData(name, email, uid)
-
     fun getUid() = firebase.getUid()
+
+    fun recoverLoginData(): LiveData<Usuario> = firebase.recoverLoginData()
 
 }
