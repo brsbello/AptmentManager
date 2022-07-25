@@ -167,7 +167,7 @@ class HomeFragment : Fragment(), KodeinAware {
             // ARRUMAR OS ERROS AQUI
             builder.setView(inflater.inflate(R.layout.load_image, null))
                 .setNeutralButton("Carregar") { dialog, id ->
-                    val url = bindingDialog.tilUrl.text
+                    val url = bindingDialog.imagemUrl.text.toString()
                     if (url.isEmpty()) {
                         bindingDialog.ivImage.setImageResource(R.drawable.ic_building);
                     } else{
@@ -176,7 +176,7 @@ class HomeFragment : Fragment(), KodeinAware {
                     builder.setView(inflater.inflate(R.layout.load_image, null))
                 }
                 .setPositiveButton("Salvar") { dialog, _ ->
-                    val url = bindingDialog.tilUrl.text
+                    val url = bindingDialog.imagemUrl.text.toString()
                     if (url.isEmpty()) {
                         viewModel.savePhoto("Falhou")
                         dialog.dismiss()
