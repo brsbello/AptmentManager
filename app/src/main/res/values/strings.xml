@@ -35,4 +35,6 @@
     <string name="alterar">Alterar Aviso</string>
     <string name="sair">Sair</string>
     <string name="anonimo">Anonimo</string>
+    <string name="carregar">Carregar</string>
+    <string name="url_da_imagem">URL da imagem</string>
 </resources>

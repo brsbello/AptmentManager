@@ -36,4 +36,8 @@ class HomeViewModel(
         return repository.recoverLoginData()
     }
 
+    fun savePhoto(url : String) {
+        repository.savePhoto(url)
+    }
+
 }

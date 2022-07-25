@@ -6,7 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.aptmentmanager.R
 import com.example.aptmentmanager.databinding.HomeFragmentBinding
+import com.example.aptmentmanager.databinding.LoadImageBinding
 import com.example.aptmentmanager.databinding.NavHeaderMainBinding
 import com.example.aptmentmanager.ui.authorization.AuthorizationFragment
 import com.example.aptmentmanager.ui.calls.CallsFragment
@@ -23,7 +24,9 @@ import com.example.aptmentmanager.ui.reservation.ReservationFragment
 import com.example.aptmentmanager.ui.rules.RulesFragment
 import com.example.aptmentmanager.ui.services.ServicesFragment
 import com.example.aptmentmanager.ui.warnings.WarningsFragment
+import com.example.aptmentmanager.utils.extensions.text
 import com.google.android.material.navigation.NavigationView
+import com.squareup.picasso.Picasso
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
@@ -35,6 +38,7 @@ class HomeFragment : Fragment(), KodeinAware {
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
     private lateinit var bindingHeader: NavHeaderMainBinding
+    private lateinit var bindingDialog: LoadImageBinding
 
     private val navigationView: NavigationView by lazy {
         binding.navView
@@ -53,13 +57,14 @@ class HomeFragment : Fragment(), KodeinAware {
         savedInstanceState: Bundle?
     ): View {
         binding = HomeFragmentBinding.inflate(layoutInflater)
+        bindingDialog = LoadImageBinding.inflate(layoutInflater)
         bindingHeader = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0))
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-        if(!viewModel.logged()){
+        if (!viewModel.logged()) {
             navigateLogin()
         }
     }
@@ -73,6 +78,7 @@ class HomeFragment : Fragment(), KodeinAware {
         logOut()
         recoverLoginData()
         setupNavDraw()
+        loadImage()
 
     }
 
@@ -116,13 +122,13 @@ class HomeFragment : Fragment(), KodeinAware {
             onNavigationItemSelected(it)
         }
 
-    //    val toolbar = binding.drawerLayout.findViewById<Toolbar>(R.id.topAppBar)
-    //    activity?.setActionBar(toolbar)
-    //    toolbar.setOnClickListener {
-    //        if (toggle.isDrawerIndicatorEnabled)
-    //        drawer.openDrawer(GravityCompat.START)
-    //        drawer.closeDrawer(GravityCompat.START)
-    //    }
+        //    val toolbar = binding.drawerLayout.findViewById<Toolbar>(R.id.topAppBar)
+        //    activity?.setActionBar(toolbar)
+        //    toolbar.setOnClickListener {
+        //        if (toggle.isDrawerIndicatorEnabled)
+        //        drawer.openDrawer(GravityCompat.START)
+        //        drawer.closeDrawer(GravityCompat.START)
+        //    }
     }
 
     private fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -154,26 +160,37 @@ class HomeFragment : Fragment(), KodeinAware {
         controller.navigate(action)
     }
 
-    fun loadImage(){
+    fun loadImage() {
         bindingHeader.imageView.setOnClickListener {
+            val builder = AlertDialog.Builder(it.context)
+            val inflater = requireActivity().layoutInflater
+            // ARRUMAR OS ERROS AQUI
+            builder.setView(inflater.inflate(R.layout.load_image, null))
+                .setNeutralButton("Carregar") { dialog, id ->
+                    val url = bindingDialog.tilUrl.text
+                    if (url.isEmpty()) {
+                        bindingDialog.ivImage.setImageResource(R.drawable.ic_building);
+                    } else{
+                        Picasso.get().load(url).into(bindingDialog.ivImage);
+                    }
+                    builder.setView(inflater.inflate(R.layout.load_image, null))
+                }
+                .setPositiveButton("Salvar") { dialog, _ ->
+                    val url = bindingDialog.tilUrl.text
+                    if (url.isEmpty()) {
+                        viewModel.savePhoto("Falhou")
+                        dialog.dismiss()
 
+                    } else{
+                        viewModel.savePhoto(url)
+                        dialog.dismiss()
+                    }
+
+                }
+                .setNegativeButton(R.string.cancel) { dialog, _ ->
+                    dialog.cancel()
+                }
+            builder.show()
         }
     }
-
-    //fun showDialog(title: String) {
-    //    val dialog = Dialog(activity)
-    //    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-    //    dialog.setCancelable(false)
-    //    dialog.setContentView(R.layout.custom_layout)
-    //    val body = dialog.findViewById(R.id.body) as TextView
-    //    body.text = title
-    //    val yesBtn = dialog.findViewById(R.id.yesBtn) as Button
-    //    val noBtn = dialog.findViewById(R.id.noBtn) as TextView
-    //    yesBtn.setOnClickListener {
-    //        dialog.dismiss()
-    //    }
-    //    noBtn.setOnClickListener { dialog.dismiss() }
-    //    dialog.show()
-    //
-    //}
 }

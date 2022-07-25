@@ -9,7 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import io.reactivex.Completable
 
-class FirebaseSource() {
+class FirebaseSource {
 
     private val firebaseAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
@@ -96,5 +96,9 @@ class FirebaseSource() {
             liveData.value = usuario
         }
         return liveData
+    }
+
+    fun savePhoto(url : String) {
+        db.collection("Usuarios").document(getUid()).update("photo", url)
     }
 }

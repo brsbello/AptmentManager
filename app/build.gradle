@@ -96,4 +96,7 @@ dependencies {
     implementation "org.kodein.di:kodein-di-generic-jvm:6.2.1"
     implementation "org.kodein.di:kodein-di-framework-android-x:6.2.1"
 
+    //PICASSO
+    implementation 'com.squareup.picasso:picasso:2.8'
+
 }

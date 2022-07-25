@@ -22,4 +22,5 @@ class UserRepository(
 
     fun recoverLoginData(): LiveData<Usuario> = firebase.recoverLoginData()
 
+    fun savePhoto(url : String) = firebase.savePhoto(url)
 }
