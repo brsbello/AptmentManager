@@ -1,5 +1,6 @@
 package com.example.aptmentmanager.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -24,7 +25,6 @@ import com.example.aptmentmanager.ui.reservation.ReservationFragment
 import com.example.aptmentmanager.ui.rules.RulesFragment
 import com.example.aptmentmanager.ui.services.ServicesFragment
 import com.example.aptmentmanager.ui.warnings.WarningsFragment
-import com.example.aptmentmanager.utils.extensions.text
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 import org.kodein.di.KodeinAware
@@ -160,18 +160,18 @@ class HomeFragment : Fragment(), KodeinAware {
         controller.navigate(action)
     }
 
-    fun loadImage() {
+    private fun loadImage() {
         bindingHeader.imageView.setOnClickListener {
             val builder = AlertDialog.Builder(it.context)
             val inflater = requireActivity().layoutInflater
             // ARRUMAR OS ERROS AQUI
-            builder.setView(inflater.inflate(R.layout.load_image, null))
+            builder.setView(inflater.inflate(R.layout.load_image,null))
                 .setNeutralButton("Carregar") { dialog, id ->
                     val url = bindingDialog.imagemUrl.text.toString()
                     if (url.isEmpty()) {
-                        bindingDialog.ivImage.setImageResource(R.drawable.ic_building);
+                        bindingDialog.ivImage.setImageResource(R.drawable.ic_building)
                     } else{
-                        Picasso.get().load(url).into(bindingDialog.ivImage);
+                        Picasso.get().load(url).into(bindingDialog.ivImage)
                     }
                     builder.setView(inflater.inflate(R.layout.load_image, null))
                 }

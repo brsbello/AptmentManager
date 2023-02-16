@@ -1,6 +1,6 @@
 package com.example.aptmentmanager.ui.home
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.aptmentmanager.data.models.Usuario
 import com.example.aptmentmanager.data.repositories.UserRepository
@@ -31,7 +31,7 @@ class HomeViewModel(
         return uid
     }
 
-    fun recoverDataLogin(): LiveData<Usuario> {
+    fun recoverDataLogin(): MutableLiveData<Usuario?> {
 
         return repository.recoverLoginData()
     }

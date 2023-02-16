@@ -1,7 +1,6 @@
 package com.example.aptmentmanager.data.firebase
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.aptmentmanager.data.models.Usuario
 import com.google.firebase.auth.FirebaseAuth
@@ -89,8 +88,8 @@ class FirebaseSource {
         return firebaseAuth.currentUser?.uid.toString()
     }
 
-    fun recoverLoginData(): LiveData<Usuario> {
-        val liveData = MutableLiveData<Usuario>()
+    fun recoverLoginData(): MutableLiveData<Usuario?> {
+        val liveData = MutableLiveData<Usuario?>()
         db.collection("Usuarios").document(getUid()).get().addOnCompleteListener { document ->
             val usuario = document.result.toObject<Usuario>()
             liveData.value = usuario

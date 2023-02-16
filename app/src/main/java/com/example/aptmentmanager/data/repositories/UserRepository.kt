@@ -1,6 +1,6 @@
 package com.example.aptmentmanager.data.repositories
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.aptmentmanager.data.firebase.FirebaseSource
 import com.example.aptmentmanager.data.models.Usuario
 
@@ -20,7 +20,7 @@ class UserRepository(
 
     fun getUid() = firebase.getUid()
 
-    fun recoverLoginData(): LiveData<Usuario> = firebase.recoverLoginData()
+    fun recoverLoginData(): MutableLiveData<Usuario?> = firebase.recoverLoginData()
 
     fun savePhoto(url : String) = firebase.savePhoto(url)
 }
